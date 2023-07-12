@@ -1,9 +1,6 @@
 from flask import Flask, jsonify
 from extension import cors
-# from Scrptes import test
 
-# 导入爬虫
-from movie.spiders.movie import MovieSpider
 
 import json
 
@@ -19,7 +16,7 @@ def hello_world():
 @app.route('/scrape', methods=['GET'])
 def scrape():
     # 从JSON文件中读取数据
-    with open('output.json', 'r', encoding='utf8', errors='ignore') as f:
+    with open('../output.json', 'r', encoding='utf8', errors='ignore') as f:
         data = json.load(f)
 
     # 将数据作为JSON响应发送给前端
