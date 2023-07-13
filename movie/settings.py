@@ -63,9 +63,12 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    "movie.pipelines.MoviePipeline": 300,
-# }
+# 配置不同的spider输出到不同的文件这将启用两个不同的管道（pipelines），
+# 分别为MyPipeline1和MyPipeline2，并设置它们的优先级。这些管道将负责处理不同的蜘蛛的输出数据。
+ITEM_PIPELINES = {
+    "movie.pipelines.MoviePipeline": 300,
+    'movie.pipelines.GamePipeline': 800,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -96,11 +99,3 @@ LOG_LEVEL = "WARNING"  # 警告和警告以上的信息会被打印
 # 日志级别: debug info warning error critical
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0'
 # 输出数据
-FEEDS = {
-    'output.json': {
-        'format': 'json',
-        'encoding': 'utf8',
-        'overwrite': True,
-        'indent': 4,
-    },
-}
